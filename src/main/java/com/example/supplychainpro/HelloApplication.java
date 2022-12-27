@@ -1,6 +1,8 @@
 package com.example.supplychainpro;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -41,13 +43,24 @@ public class HelloApplication extends Application {
         Label emailLabel= new Label("Email");
         Label passwordLabel= new Label("Password");
         Label trial= new Label("new Label FOR me");
+        Label messageLabel = new Label("I am a message");
 
-        Button loginButton= new Button("Login");
+
 
         TextField emailTextField= new TextField("");
         PasswordField passwordField= new PasswordField();
 
+        Button loginButton= new Button("Login");
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
 
+                String email= emailTextField.getText();
+                String password= passwordField.getText();
+                messageLabel.setText(email + " $$ " + password);
+
+            }
+        });
 
         GridPane gridPane= new GridPane();
         gridPane.setVgap(5);
@@ -60,6 +73,7 @@ public class HelloApplication extends Application {
         gridPane.add(passwordLabel,0,1);
         gridPane.add(passwordField,1,1);
         gridPane.add(loginButton,0,2);
+        gridPane.add(messageLabel,1,2);
 
 
         return gridPane;
