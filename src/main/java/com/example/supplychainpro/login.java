@@ -46,6 +46,22 @@ public static boolean customerlogin (String email,String password){
  return false;
 }
 
+    public static boolean customername (String email,String password){
+        String query = String.format("SELECT * FROM customerinfo WHERE email= '%s' AND password= '%s' ",email,password);
+        try{
+            database_connection dbcon= new database_connection();
+            ResultSet rs = dbcon.getQueryTable(query);
+
+            if(rs!= null && rs.next()){
+
+                return true;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 //    public static void main(String[] args) {
 //        login Login= new login();
 //        System.out.println(login.customerlogin("isapurkar1998@gmail.com", "1234@abc"));

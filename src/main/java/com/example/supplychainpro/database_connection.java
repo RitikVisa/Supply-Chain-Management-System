@@ -29,6 +29,16 @@ public class database_connection{
         return null;
     }
 
+    public int executeUpdateQuery(String query){
+        Statement statement=getStatement();
+        try{
+            return statement.executeUpdate(query);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 //    public static void main(String[] args) {
 //        database_connection databaseConnection= new database_connection();
 //        ResultSet rs= databaseConnection.getQueryTable("select email, password FROM customerinfo");
